@@ -25,7 +25,7 @@ const validate = data => {
         delete errors.password
     }
 
-    if (data.confirmPassword) {
+    if (!data.confirmPassword) {
         errors.confirmPassword = "Confirm the password"
     }
     else if (data.confirmPassword !== data.password) {
