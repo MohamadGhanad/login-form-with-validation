@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 //styles
 import styles from "./SignUp.module.css"
+
+//functions 
+import validate from './validate';
 
 const SignUp = () => {
 
@@ -12,6 +15,13 @@ const SignUp = () => {
         confirmPassword: "",
         isAccepted: false
     })
+
+    const [errors, setErrors] = useState({})
+
+    useEffect(() => {
+        setErrors(validate(data))
+        console.log(errors);
+    },[data])
 
     const inputHandler = (event) => {
         if(event.target.name === 'isAccepted') {
